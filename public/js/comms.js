@@ -1,7 +1,6 @@
 ;(function() {
   this.Comms = function(isClient, incomingMoveCallback) {
     this.pusher = new Pusher('298476ce85640b88848c');
-    this.pusher.channel_auth_endpoint = 'http://localhost:3000/pusher/auth';
 
     this.channel = this.pusher.subscribe('private-marbles.wtf');
 
