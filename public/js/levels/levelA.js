@@ -17,17 +17,19 @@
     bodyDef.type = b2Body.b2_staticBody;
     fixDef.shape = new b2PolygonShape;
 
-    fixDef.shape.SetAsBox(1.5, 9);
-    bodyDef.position.Set(7, 9.5);
+    fixDef.shape.SetAsBox(1.4, 10);
+    bodyDef.position.Set(7, 8.58);
     world.CreateBody(bodyDef).CreateFixture(fixDef);
 
-    fixDef.shape.SetAsBox(1.5, 10);
-    bodyDef.position.Set(15.5, 20);
+    fixDef.shape.SetAsBox(1.40, 10);
+    bodyDef.position.Set(15.40, 14);
     world.CreateBody(bodyDef).CreateFixture(fixDef);
 
-    fixDef.shape.SetAsBox(25, 2);
-    bodyDef.position.Set(10, 640 / 30 + 1.8);
+    fixDef.shape.SetAsBox(1.40, 10);
+    bodyDef.position.Set(23.79, 7.8);
     world.CreateBody(bodyDef).CreateFixture(fixDef);
+
+
   };
 
 }).call(this);

@@ -21,11 +21,13 @@
     bodyDef.type = b2Body.b2_staticBody;
     fixDef.shape = new b2PolygonShape;
     fixDef.shape.SetAsBox(25, 2);
-    bodyDef.position.Set(10, 640 / 30 + 1.8);
+    bodyDef.position.Set(10, 646 / 30 + 1.8);
     world.CreateBody(bodyDef).CreateFixture(fixDef);
-    bodyDef.position.Set(10, -1.8);
+
+    bodyDef.position.Set(10, -2.01);
     world.CreateBody(bodyDef).CreateFixture(fixDef);
-    fixDef.shape.SetAsBox(2, 14);
+
+    fixDef.shape.SetAsBox(1.78, 14);
     bodyDef.position.Set(-1.8, 13);
     world.CreateBody(bodyDef).CreateFixture(fixDef);
     bodyDef.position.Set(975 / 30, 13);

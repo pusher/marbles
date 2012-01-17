@@ -2,9 +2,24 @@
   this.Marbler = function(world) {
     this.marbles = {};
     this.world = world;
+    this.setup();
   };
 
   this.Marbler.prototype = {
+    setup: function() {
+      this.ballImg = new Image();
+      this.ballImg.src = 'images/marble.png';
+    },
+
+    update: function(ctx) {
+      for(var i in this.marbles) {
+        var marble = this.marbles[i];
+
+        var marblePosition = marble.GetPosition();
+        ctx.drawImage(this.ballImg, marblePosition.x * 30 - 30, marblePosition.y * 30 - 30);
+      }
+    },
+
     addMarble: function(socketId) {
       var b2FixtureDef = Box2D.Dynamics.b2FixtureDef;
       var b2Body = Box2D.Dynamics.b2Body;
@@ -23,8 +38,8 @@
 
       bodyDef.type = b2Body.b2_dynamicBody;
       fixDef.shape = new b2CircleShape(1);
-      bodyDef.position.x = 10;
-      bodyDef.position.y = 10;
+      bodyDef.position.x = 1;
+      bodyDef.position.y = 1;
 
       this.marbles[socketId] = this.world.CreateBody(bodyDef)
       this.marbles[socketId].CreateFixture(fixDef);
@@ -46,12 +61,9 @@
         var marble = this.marbles[data.socket_id];
 
         var interval = (new Date().getTime() - this.lastEvent) / 1000;
-        console.log(interval)
         var gravity = 9.8 * interval;
         var x = Math.sin(this.rad(data.ns)) * gravity;
         var y = Math.sin(this.rad(data.ew)) * gravity;
-
-        //console.log(data.ns, data.ew, x, y)
 
         marble.ApplyForce(new b2Vec2(x, y), marble.GetWorldCenter());
       }

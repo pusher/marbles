@@ -13,6 +13,8 @@ function init() {
 
   var bodyDef = new b2BodyDef;
 
+  var canvasContext = document.getElementById("canvas").getContext("2d");
+
   // load world and level
   var world = new World();
   new LevelA(world);
@@ -25,7 +27,7 @@ function init() {
 
   // setup debug draw
   var debugDraw = new b2DebugDraw();
-	debugDraw.SetSprite(document.getElementById("canvas").getContext("2d"));
+	debugDraw.SetSprite(canvasContext);
 	debugDraw.SetDrawScale(30.0);
 	debugDraw.SetFillAlpha(0.5);
 	debugDraw.SetLineThickness(1.0);
@@ -34,10 +36,13 @@ function init() {
 
   window.setInterval(update, 1000 / 60);
 
+
   function update() {
+    canvas.width = canvas.width;
     world.Step(1 / 60, 10, 10);
-    world.DrawDebugData();
+    //world.DrawDebugData();
     world.ClearForces();
+    marbler.update(canvasContext);
   };
 
   // helpers
