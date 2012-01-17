@@ -13,7 +13,7 @@
 
     var fixDef = new b2FixtureDef;
     fixDef.density = 1.0;
-    fixDef.friction = 0.5;
+    fixDef.friction = 0;
     fixDef.restitution = 0.2;
 
     // ground

@@ -1,4 +1,5 @@
 function init() {
+  console.log("hii")
   var b2Vec2 = Box2D.Common.Math.b2Vec2,
   b2AABB = Box2D.Collision.b2AABB,
   b2BodyDef = Box2D.Dynamics.b2BodyDef,
@@ -15,26 +16,12 @@ function init() {
   // load world and level
   var world = new World();
   new LevelA();
-  var comms = new Comms();
+  var marbler = new Marbler(world);
+  var comms = new Comms(false, function(data) {
+    marbler.handleMarbleMove(data);
+  });
 
   // create marble
-
-  var fixDef = new b2FixtureDef;
-  fixDef.density = 1.0;
-  fixDef.friction = 0.5;
-  fixDef.restitution = 0.2;
-
-  var marble = null;
-  bodyDef.type = b2Body.b2_dynamicBody;
-  fixDef.shape = new b2CircleShape(1);
-  bodyDef.position.x = Math.random() * 10;
-  bodyDef.position.y = Math.random() * 10;
-  marble = world.CreateBody(bodyDef)
-  marble.CreateFixture(fixDef);
-
-  // marble.ApplyImpulse(new b2Vec2(1,
-  //                                1),
-  //                                marble.GetWorldCenter());
 
   // setup debug draw
   var debugDraw = new b2DebugDraw();
