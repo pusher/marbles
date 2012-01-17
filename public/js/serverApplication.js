@@ -15,7 +15,7 @@ function init() {
 
   // load world and level
   var world = new World();
-  new LevelA();
+  new LevelA(world);
   var marbler = new Marbler(world);
   var comms = new Comms(false, function(data) {
     marbler.handleMarbleMove(data);
